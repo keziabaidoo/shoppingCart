@@ -10,7 +10,8 @@ export default function AddToCartScreen({route,navigation}){
         return(
             <View style={styles.container}>
                 <View style={styles.onlineTextContainer}>
-                   <Text style={styles.onlineText}>{newTitle}</Text>
+                   <Text style={styles.onlineText}>ADD TO CART</Text>
+                    <Text style={styles.newText}>{newTitle}</Text>
                       <Text style={styles.inputText}>The growing popularity of the internet has given us a new way of shopping.
                            More and more business are offering their products online instead of standard stores. 
                     </Text>
@@ -91,9 +92,14 @@ const styles=StyleSheet.create({
     imageText:{
         height:200,
         width:200,
-        
 
     },
+
+        newText:{
+           textAlign:'center',
+           color:'skyblue',
+           marginTop:5
+        },
     buttonContainer:{
         width:150,
         height:50,

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View,Text,TextInput,Button,Image,StyleSheet,TouchableOpacity} from 'react-native'
 import {Entypo} from '@expo/vector-icons'
+import AddToCartScreen from './AddToCartScreen';
 
 
 export default function PaymentSuccessfulScreen({navigation}){
@@ -27,7 +28,7 @@ export default function PaymentSuccessfulScreen({navigation}){
                <View style={styles.footer}>
                    <Entypo name='progress-full' size={50} style={styles.progressText}/>
                    <TouchableOpacity onPress={()=>{
-                       navigation.navigate({newTitle})
+                       navigation.navigate('AddToCart')
                    }}
                    style={styles.previousText}>
                    <Text style={styles.previousColor}>Previous</Text>
