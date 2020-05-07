@@ -1,38 +1,45 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {View,Text,TextInput,Button,Image,StyleSheet,TouchableOpacity} from 'react-native'
 import {Entypo} from '@expo/vector-icons'
 
 
-class OnlineShoppingScreen extends Component{
-    render(){
+export default function PaymentSuccessfulScreen({navigation}){
+
         return(
             <View style={styles.container}>
                 <View style={styles.onlineTextContainer}>
-                    <Text style={styles.onlineText}>ONLINE SHOPPING</Text>
+                    <Text style={styles.onlineText}>PAYMENT SUCCESSFUL</Text>
                       <Text style={styles.inputText}>The growing popularity of the internet has given us a new way of shopping.
                            More and more business are offering their products online instead of standard stores. 
                     </Text>
 
                     <View style={styles.imageInfo}>
-                        <Image source={require('../assets/image1.png')} style={styles.imageText}/>
+                        <Image source={require('../../assets/image3.png')} style={styles.imageText}/>
                     </View>
 
-                    <View>
-                   <TouchableOpacity style={styles.buttonContainer}>
-                       <Text style={styles.buttonText}>Next</Text>
+                   <TouchableOpacity onPress={()=>{
+                       navigation.navigate('OnlineShopping')
+                   }}
+                   style={styles.buttonContainer}>
+                       <Text style={styles.buttonText}>Get Started</Text>
                    </TouchableOpacity>
-               </View>
+               
                <View style={styles.footer}>
-                   <Entypo name='progress-one' size={40} style={styles.progressText}/>
-                   <Text style={styles.skipText}>Skip</Text>
-
+                   <Entypo name='progress-full' size={50} style={styles.progressText}/>
+                   <TouchableOpacity onPress={()=>{
+                       navigation.navigate({newTitle})
+                   }}
+                   style={styles.previousText}>
+                   <Text style={styles.previousColor}>Previous</Text>
+                   </TouchableOpacity>
+                   
                </View>
                 </View>
 
             </View>
         )
     }
-}
+
 
 
 
@@ -62,12 +69,12 @@ const styles=StyleSheet.create({
         textAlign:'justify',
         marginTop:10,
         fontSize:15,
-        
-        
+          
     },
 
     imageInfo:{
-    marginVertical:30
+    marginVertical:30,
+    alignSelf:'center'
 
     },
     imageText:{
@@ -99,14 +106,16 @@ const styles=StyleSheet.create({
         marginLeft:100,
         color:'skyblue'
     },
+    previousColor:{
+         color:'skyblue'
+    },
 
-    skipText:{
+    previousText:{
+        color:'skyblue',
         position:'absolute',
-        right:0,
-        color:'skyblue'
+        left:0
     }
 
 
 })
 
-export default OnlineShoppingScreen

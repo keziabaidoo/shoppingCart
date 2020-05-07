@@ -1,38 +1,46 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {View,Text,TextInput,Button,Image,StyleSheet,TouchableOpacity} from 'react-native'
 import {Entypo} from '@expo/vector-icons'
 
 
-class AddToCartScreen extends Component{
-    render(){
+export default function OnlineShoppingScreen({navigation}){
+    
         return(
             <View style={styles.container}>
                 <View style={styles.onlineTextContainer}>
-                    <Text style={styles.onlineText}>ADD TO CART</Text>
+                    <Text style={styles.onlineText}>ONLINE SHOPPING</Text>
                       <Text style={styles.inputText}>The growing popularity of the internet has given us a new way of shopping.
                            More and more business are offering their products online instead of standard stores. 
                     </Text>
 
                     <View style={styles.imageInfo}>
-                        <Image source={require('../assets/image2.png')} style={styles.imageText}/>
+                        <Image source={require('../../assets/image1.png')} style={styles.imageText}/>
                     </View>
 
-                    <View>
-                   <TouchableOpacity style={styles.buttonContainer}>
+                    
+                   <TouchableOpacity  onPress={()=>{
+                       navigation.navigate("AddToCart",{newTitle:"SHOP NOW"})
+                   }}style={styles.buttonContainer}>
                        <Text style={styles.buttonText}>Next</Text>
                    </TouchableOpacity>
-               </View>
+               
                <View style={styles.footer}>
-                   <Entypo name='progress-one' size={50} style={styles.progressText}/>
-                   <Text style={styles.skipText}>Skip</Text>
-                   <Text style={styles.previousText}>Previous</Text>
+                   <Entypo name='progress-one' size={40} style={styles.progressText}/>
+                   <TouchableOpacity onPress={()=>{
+                       navigation.navigate('PaymentSuccessful')
+                   }}
+                   style={styles.skipText}>
+                   <Text style={styles.skipColor}>Skip</Text>
+                   </TouchableOpacity>
+                   
+
                </View>
                 </View>
 
             </View>
         )
     }
-}
+
 
 
 
@@ -67,7 +75,8 @@ const styles=StyleSheet.create({
     },
 
     imageInfo:{
-    marginVertical:30
+    marginVertical:30,
+    alignSelf:'center'
 
     },
     imageText:{
@@ -100,18 +109,16 @@ const styles=StyleSheet.create({
         color:'skyblue'
     },
 
+    skipColor:{
+       color:'skyblue'
+    },
+
     skipText:{
         position:'absolute',
         right:0,
         color:'skyblue'
-    },
-    previousText:{
-        color:'skyblue',
-        position:'absolute',
-        left:0
     }
 
 
 })
 
-export default AddToCartScreen

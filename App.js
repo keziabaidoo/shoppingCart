@@ -1,21 +1,41 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import OnlineShoppingScreen from './Component/OnlineShoppingScreen';
-import AddToCartScreen from './Component/AddToCartScreen'
-import PaymentSuccessfulScreen from './Component/PaymentSuccessfulScreen';
+import {  Text, View } from 'react-native';
+import {NavigationContainer } from   '@react-navigation/native';
+import {createStackNavigator } from '@react-navigation/stack';
+import OnlineShoppingScreen from './src/Screen/OnlineShoppingScreen';
+import AddToCartScreen from './src/Screen/AddToCartScreen';
+import PaymentSuccessfulScreen from './src/Screen/PaymentSuccessfulScreen'
+
+const Stack = createStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/*<OnlineShoppingScreen/>*/}
-      {/*<AddToCartScreen/>*/}
-      <PaymentSuccessfulScreen/>
-    </View>
+        
+       <NavigationContainer>
+
+         <Stack.Navigator 
+            screenOptions={{
+              title:'Shop-Ins',
+              headerStyle:{
+               backgroundColor:'skyblue'
+              },
+              headerTintColor:'white',
+              headerTitleAlign:'center'
+
+             }}
+                >
+           <Stack.Screen 
+             // options={{
+            name="OnlineShopping" 
+            component={OnlineShoppingScreen} />
+           <Stack.Screen name="AddToCart" component={AddToCartScreen} />
+           <Stack.Screen name="PaymentSuccessful" component={PaymentSuccessfulScreen} />
+           
+         </Stack.Navigator>
+
+       </NavigationContainer>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop:100
-  },
-});
+
